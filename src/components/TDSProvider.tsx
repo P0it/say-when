@@ -11,17 +11,19 @@ export default function TDSProvider({ children }: { children: React.ReactNode })
     setMounted(true);
   }, []);
 
-  // ThemeProvider is always rendered (SSR + client) so TDS components work during prerender.
-  // TDSMobileAITProvider (which depends on @apps-in-toss/web-framework runtime) is client-only.
-  const content = <ThemeProvider>{children}</ThemeProvider>;
-
+  // SSR/prerender: 빈 화면 (TDS 컴포넌트가 ThemeProvider 없이 렌더되면 에러남)
+  // 클라이언트 마운트 후: TDS Provider로 감싸서 정상 렌더
   if (!mounted) {
-    return content;
+    return (
+      <div style={{ minHeight: "100dvh", backgroundColor: "#fff" }} />
+    );
   }
 
   return (
     <TDSMobileAITProvider>
-      {content}
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
     </TDSMobileAITProvider>
   );
 }
