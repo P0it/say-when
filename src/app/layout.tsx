@@ -11,13 +11,14 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "Where is the Line? - 여사친/남사친 경계 테스트",
+  title: "애사친 경계 테스트 - 이 행동, 친구니까 가능한 거 맞아?",
   description:
-    "이 행동, 친구니까 가능한 거야 아닌 거야? 이성 친구 사이의 경계를 테스트해보세요!",
+    "내 연인이 애사친과 이런 행동을 했을 때, 나는 괜찮을까? 20문항으로 알아보는 경계 유형 테스트",
   openGraph: {
-    title: "여사친/남사친 경계 테스트",
-    description: "내 이성 친구 경계는 어디? 지금 테스트해보세요!",
+    title: "애사친 경계 테스트",
+    description: "이 행동, 친구니까 가능한 거 맞아?",
     type: "website",
+    images: [{ url: "/og-image.png" }],
   },
 };
 

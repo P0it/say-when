@@ -15,15 +15,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   const resultType = typeId ? resultTypes.find((r) => r.id === typeId) : undefined;
+  const ogImage = "/og-image.png";
 
   if (resultType) {
     return {
       title: `${resultType.name} ${resultType.emoji} - 애사친 경계 테스트`,
       description: `나의 애사친 경계 타입은 "${resultType.name}" - ${resultType.shareLine}`,
       openGraph: {
-        title: `${resultType.name} ${resultType.emoji}`,
+        title: `${resultType.name} ${resultType.emoji} - 애사친 경계 테스트`,
         description: resultType.shareLine,
         type: "website",
+        images: [{ url: ogImage }],
       },
     };
   }
@@ -35,6 +37,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title: "애사친 경계 테스트",
       description: "이 행동, 친구니까 가능한 거 맞아?",
       type: "website",
+      images: [{ url: ogImage }],
     },
   };
 }

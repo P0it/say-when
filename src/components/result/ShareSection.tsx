@@ -74,7 +74,7 @@ export default function ShareSection({ resultType }: ShareSectionProps) {
         className="h-[52px] w-full rounded-2xl bg-[#F2F4F6] text-[15px] font-medium text-[#333D4B] active:bg-[#E5E8EB] transition-colors"
         onClick={handleShareTest}
       >
-        친구에게 테스트 퍼뜨리기
+        친구에게 테스트 공유하기
       </button>
     </div>
   );
