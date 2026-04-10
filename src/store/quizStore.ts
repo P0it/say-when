@@ -9,6 +9,7 @@ interface QuizStore {
   isComplete: boolean;
   resultTypeId: ResultTypeId | null;
   answerQuestion: (answer: Answer) => void;
+  goBack: () => void;
   reset: () => void;
 }
 
@@ -36,6 +37,16 @@ export const useQuizStore = create<QuizStore>((set) => ({
       return {
         answers: newAnswers,
         currentQuestionIndex: nextIndex,
+      };
+    });
+  },
+
+  goBack: () => {
+    set((state) => {
+      if (state.currentQuestionIndex === 0) return state;
+      return {
+        answers: state.answers.slice(0, -1),
+        currentQuestionIndex: state.currentQuestionIndex - 1,
       };
     });
   },

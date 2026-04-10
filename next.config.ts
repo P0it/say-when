@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  turbopack: {
+    resolveAlias: {
+      "@apps-in-toss/web-framework": "./src/lib/web-framework-stub.ts",
+    },
+  },
 };
 
 export default nextConfig;

@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useQuizStore } from "@/store/quizStore";
+import { Button } from "@toss/tds-mobile";
+import { colors } from "@toss/tds-colors";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -15,8 +16,8 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
 export default function LandingContent() {
@@ -28,66 +29,75 @@ export default function LandingContent() {
   }, [reset]);
 
   return (
-    <div className="flex min-h-dvh flex-col items-center justify-center bg-gradient-to-b from-pink-50 to-white px-5">
+    <div className="flex min-h-dvh flex-col justify-between px-6 pb-10 pt-16" style={{ backgroundColor: colors.white }}>
       <motion.div
-        className="flex flex-col items-center gap-6 text-center"
+        className="flex flex-1 flex-col items-center justify-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.h1
-          className="text-4xl font-bold leading-tight tracking-tight text-foreground"
+        {/* Hero emoji */}
+        <motion.div
+          className="mb-8 flex h-32 w-32 items-center justify-center rounded-full"
+          style={{ backgroundColor: colors.blue50 }}
           variants={itemVariants}
         >
-          여사친/남사친
+          <span className="text-7xl">🤔</span>
+        </motion.div>
+
+        {/* Badge */}
+        <motion.div
+          className="mb-5 rounded-full px-4 py-1.5 text-[13px] font-semibold"
+          style={{ backgroundColor: colors.blue100, color: colors.blue500 }}
+          variants={itemVariants}
+        >
+          애사친 경계 테스트
+        </motion.div>
+
+        <motion.h1
+          className="text-center text-[26px] font-bold leading-[1.4] tracking-tight"
+          style={{ color: colors.grey900 }}
+          variants={itemVariants}
+        >
+          이 행동, 친구니까
           <br />
-          경계 테스트
+          가능한 거 맞아?
         </motion.h1>
 
+        {/* 관점 설명 */}
         <motion.p
-          className="text-base text-muted-foreground"
+          className="mt-4 text-center text-[14px] leading-[1.7]"
+          style={{ color: colors.grey500 }}
           variants={itemVariants}
         >
-          연인이 있는 상태에서,
+          내 연인이 애사친과 이런 행동을 했을 때
           <br />
-          이성 친구의 이 행동... 가능? 불가능?
+          <span className="font-semibold" style={{ color: colors.blue500 }}>내가 괜찮은지</span> 판단해 주세요
         </motion.p>
-
-        <motion.div
-          className="flex gap-2 text-3xl"
-          variants={itemVariants}
-        >
-          <span>🏯</span>
-          <span>📏</span>
-          <span>🧊</span>
-          <span>💕</span>
-          <span>🗽</span>
-          <span>🚩</span>
-        </motion.div>
 
         <motion.p
-          className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground"
+          className="mt-3 text-[13px]"
+          style={{ color: colors.grey400 }}
           variants={itemVariants}
         >
-          {"💑 연인이 있다고 가정합니다\n19개의 상황에 답하고\n나의 경계 타입을 확인해보세요!"}
+          20문항 · 약 2분
         </motion.p>
+      </motion.div>
 
-        <motion.div variants={itemVariants}>
-          <Button
-            size="lg"
-            className="mt-2 w-full rounded-xl bg-primary px-10 py-6 text-lg font-bold text-primary-foreground shadow-md hover:bg-primary/90"
-            onClick={() => router.push("/quiz")}
-          >
-            테스트 시작하기
-          </Button>
-        </motion.div>
-
-        <motion.p
-          className="mt-2 text-xs text-muted-foreground"
-          variants={itemVariants}
+      <motion.div
+        variants={itemVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <Button
+          color="primary"
+          variant="fill"
+          size="xlarge"
+          display="full"
+          onClick={() => router.push("/quiz")}
         >
-          약 2분 소요
-        </motion.p>
+          시작하기
+        </Button>
       </motion.div>
     </div>
   );

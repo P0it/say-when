@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import TDSProvider from "@/components/TDSProvider";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -35,9 +36,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSansKR.variable} font-sans antialiased`}>
-        <div className="mx-auto min-h-dvh w-full max-w-[430px] bg-white shadow-sm">
-          {children}
-        </div>
+        <TDSProvider>
+          <div className="mx-auto min-h-dvh w-full max-w-[430px] bg-white">
+            {children}
+          </div>
+        </TDSProvider>
       </body>
     </html>
   );
