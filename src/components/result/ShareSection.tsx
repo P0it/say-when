@@ -10,12 +10,16 @@ interface ShareSectionProps {
 export default function ShareSection({ resultType }: ShareSectionProps) {
   const [copied, setCopied] = useState(false);
 
+  const getShareUrl = () => {
+    if (typeof window === "undefined") return "";
+    return `${window.location.origin}/result?type=${resultType.id}`;
+  };
+
   const shareText = `나의 애사친 경계 타입은 "${resultType.name}" ${resultType.emoji}\n${resultType.shareLine}`;
 
   const handleShare = async () => {
-    const shareUrl = typeof window !== "undefined" ? window.location.origin : "";
+    const shareUrl = getShareUrl();
 
-    // Web Share API (모바일에서 카카오톡 포함 앱 선택 가능)
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({
@@ -29,13 +33,12 @@ export default function ShareSection({ resultType }: ShareSectionProps) {
       }
     }
 
-    // Web Share API 미지원 시 링크 복사로 폴백
     await handleCopyLink();
   };
 
   const handleCopyLink = async () => {
     try {
-      const shareUrl = typeof window !== "undefined" ? window.location.origin : "";
+      const shareUrl = getShareUrl();
       await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
