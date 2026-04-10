@@ -7,7 +7,6 @@ import { useQuizStore } from "@/store/quizStore";
 import { resultTypes } from "@/data/resultTypes";
 import ResultCard from "@/components/result/ResultCard";
 import ShareSection from "@/components/result/ShareSection";
-import CoupleCompareButton from "@/components/result/CoupleCompareButton";
 import OtherTypes from "@/components/result/OtherTypes";
 
 const containerVariants = {
@@ -53,7 +52,7 @@ export default function ResultPage() {
     >
       <motion.div variants={itemVariants} className="mb-6 flex justify-center">
         <div className="rounded-full px-5 py-2 text-[14px] font-semibold bg-[#E8F3FF] text-[#3182F6]">
-          🎯 당신의 이성 친구 경계 타입은
+          🎯 당신의 애사친 경계 타입은
         </div>
       </motion.div>
 
@@ -64,13 +63,12 @@ export default function ResultPage() {
       <motion.div variants={itemVariants} className="my-8 h-2 -mx-6 bg-[#F9FAFB]" />
 
       <motion.div variants={itemVariants} className="mb-4">
-        <p className="text-[16px] font-bold text-[#191F28]">친구에게 공유하기</p>
-        <p className="mt-1 text-[13px] text-[#8B95A1]">친구의 경계 유형도 알아보세요</p>
+        <p className="text-[16px] font-bold text-[#191F28]">결과 공유하기</p>
+        <p className="mt-1 text-[13px] text-[#8B95A1]">연인이나 친구에게 내 결과를 보여주세요</p>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="w-full flex flex-col gap-3">
+      <motion.div variants={itemVariants} className="w-full">
         <ShareSection resultType={resultType} />
-        <CoupleCompareButton />
       </motion.div>
 
       <motion.div variants={itemVariants} className="my-8 h-2 -mx-6 bg-[#F9FAFB]" />

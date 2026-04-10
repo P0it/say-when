@@ -55,7 +55,7 @@ export const questions: Question[] = [
   {
     id: 8,
     situation:
-      "내 연인이 애사친 생일에 좋아하는 작가의 초판 책을 중고로 구해서 손편지와 함께 선물했다고 한다",
+      "내 연인이 애사친 생일에 직접 고른 선물과 손편지를 줬다고 한다. 꽤 오래 고민해서 골랐다는데",
     emoji: "🎁",
     category: "emotional",
   },
