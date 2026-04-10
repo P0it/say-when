@@ -2,8 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@toss/tds-mobile";
-import { colors } from "@toss/tds-colors";
 import type { Question, Answer } from "@/types/quiz";
 
 interface QuestionCardProps {
@@ -28,49 +26,40 @@ export default function QuestionCard({ question, onAnswer }: QuestionCardProps) 
 
   return (
     <div className="flex flex-col items-center gap-10">
-      {/* Emoji hero */}
       <span className="text-8xl">{question.emoji}</span>
 
-      {/* Situation card */}
-      <div
-        className="w-full rounded-2xl px-5 py-6"
-        style={{ backgroundColor: colors.grey50 }}
-      >
-        <p
-          className="text-[16px] font-medium leading-[1.7] tracking-tight"
-          style={{ color: colors.grey800 }}
-        >
+      <div className="w-full rounded-2xl bg-[#F9FAFB] px-5 py-6">
+        <p className="text-[16px] font-medium leading-[1.7] tracking-tight text-[#333D4B]">
           {question.situation}
         </p>
       </div>
 
-      {/* Answer buttons */}
       <div className="flex w-full gap-3">
-        <motion.div className="flex-1" whileTap={{ scale: 0.96 }}>
-          <Button
-            color="primary"
-            variant={selected === "possible" ? "fill" : "weak"}
-            size="xlarge"
-            display="full"
-            disabled={selected !== null}
-            onClick={() => handleSelect("possible")}
-          >
-            가능
-          </Button>
-        </motion.div>
+        <motion.button
+          whileTap={{ scale: 0.96 }}
+          className={`flex-1 h-[52px] rounded-2xl text-[16px] font-bold transition-all duration-200 ${
+            selected === "possible"
+              ? "bg-[#3182F6] text-white"
+              : "bg-[#E8F3FF] text-[#3182F6]"
+          }`}
+          disabled={selected !== null}
+          onClick={() => handleSelect("possible")}
+        >
+          가능
+        </motion.button>
 
-        <motion.div className="flex-1" whileTap={{ scale: 0.96 }}>
-          <Button
-            color="danger"
-            variant={selected === "impossible" ? "fill" : "weak"}
-            size="xlarge"
-            display="full"
-            disabled={selected !== null}
-            onClick={() => handleSelect("impossible")}
-          >
-            불가능
-          </Button>
-        </motion.div>
+        <motion.button
+          whileTap={{ scale: 0.96 }}
+          className={`flex-1 h-[52px] rounded-2xl text-[16px] font-bold transition-all duration-200 ${
+            selected === "impossible"
+              ? "bg-[#F04452] text-white"
+              : "bg-[#FFF0F0] text-[#F04452]"
+          }`}
+          disabled={selected !== null}
+          onClick={() => handleSelect("impossible")}
+        >
+          불가능
+        </motion.button>
       </div>
     </div>
   );

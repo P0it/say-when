@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@toss/tds-mobile";
-import { colors } from "@toss/tds-colors";
 
 export default function CoupleCompareButton() {
   const [showToast, setShowToast] = useState(false);
@@ -15,23 +13,19 @@ export default function CoupleCompareButton() {
 
   return (
     <div className="relative">
-      <Button
-        color="dark"
-        variant="weak"
-        size="xlarge"
-        display="full"
+      <button
+        className="h-[52px] w-full rounded-2xl bg-[#F2F4F6] text-[15px] font-medium text-[#333D4B] active:bg-[#E5E8EB] transition-colors"
         onClick={handleClick}
       >
         💑 커플 비교하기
-      </Button>
+      </button>
       <AnimatePresence>
         {showToast ? (
           <motion.div
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 4 }}
-            className="absolute -top-11 left-1/2 -translate-x-1/2 rounded-xl px-4 py-2.5 text-[13px] font-medium shadow-lg"
-            style={{ backgroundColor: colors.grey900, color: colors.white }}
+            className="absolute -top-11 left-1/2 -translate-x-1/2 rounded-xl bg-[#191F28] px-4 py-2.5 text-[13px] font-medium text-white shadow-lg"
           >
             준비 중이에요!
           </motion.div>

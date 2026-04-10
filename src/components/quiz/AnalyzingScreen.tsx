@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { colors } from "@toss/tds-colors";
 
 export default function AnalyzingScreen() {
   return (
-    <div
-      className="flex min-h-dvh flex-col items-center justify-center px-6"
-      style={{ backgroundColor: colors.white }}
-    >
+    <div className="flex min-h-dvh flex-col items-center justify-center px-6 bg-white">
       <motion.div
         className="flex flex-col items-center gap-5"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -23,10 +19,10 @@ export default function AnalyzingScreen() {
           🔍
         </motion.span>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-[16px] font-semibold" style={{ color: colors.grey900 }}>
+          <p className="text-[16px] font-semibold text-[#191F28]">
             결과를 분석 중입니다
           </p>
-          <p className="text-[14px]" style={{ color: colors.grey500 }}>
+          <p className="text-[14px] text-[#6B7684]">
             잠시만 기다려주세요..
           </p>
         </div>

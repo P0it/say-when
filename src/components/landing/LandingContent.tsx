@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useQuizStore } from "@/store/quizStore";
-import { Button } from "@toss/tds-mobile";
-import { colors } from "@toss/tds-colors";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,34 +27,29 @@ export default function LandingContent() {
   }, [reset]);
 
   return (
-    <div className="flex min-h-dvh flex-col justify-between px-6 pb-10 pt-16" style={{ backgroundColor: colors.white }}>
+    <div className="flex min-h-dvh flex-col justify-between px-6 pb-10 pt-16 bg-white">
       <motion.div
         className="flex flex-1 flex-col items-center justify-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Hero emoji */}
         <motion.div
-          className="mb-8 flex h-32 w-32 items-center justify-center rounded-full"
-          style={{ backgroundColor: colors.blue50 }}
+          className="mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-[#E8F3FF]"
           variants={itemVariants}
         >
           <span className="text-7xl">🤔</span>
         </motion.div>
 
-        {/* Badge */}
         <motion.div
-          className="mb-5 rounded-full px-4 py-1.5 text-[13px] font-semibold"
-          style={{ backgroundColor: colors.blue100, color: colors.blue500 }}
+          className="mb-5 rounded-full px-4 py-1.5 text-[13px] font-semibold bg-[#DCEEFB] text-[#3182F6]"
           variants={itemVariants}
         >
           애사친 경계 테스트
         </motion.div>
 
         <motion.h1
-          className="text-center text-[26px] font-bold leading-[1.4] tracking-tight"
-          style={{ color: colors.grey900 }}
+          className="text-center text-[26px] font-bold leading-[1.4] tracking-tight text-[#191F28]"
           variants={itemVariants}
         >
           이 행동, 친구니까
@@ -64,20 +57,17 @@ export default function LandingContent() {
           가능한 거 맞아?
         </motion.h1>
 
-        {/* 관점 설명 */}
         <motion.p
-          className="mt-4 text-center text-[14px] leading-[1.7]"
-          style={{ color: colors.grey500 }}
+          className="mt-4 text-center text-[14px] leading-[1.7] text-[#6B7684]"
           variants={itemVariants}
         >
           내 연인이 애사친과 이런 행동을 했을 때
           <br />
-          <span className="font-semibold" style={{ color: colors.blue500 }}>내가 괜찮은지</span> 판단해 주세요
+          <span className="font-semibold text-[#3182F6]">내가 괜찮은지</span> 판단해 주세요
         </motion.p>
 
         <motion.p
-          className="mt-3 text-[13px]"
-          style={{ color: colors.grey400 }}
+          className="mt-3 text-[13px] text-[#B0B8C1]"
           variants={itemVariants}
         >
           20문항 · 약 2분
@@ -89,15 +79,12 @@ export default function LandingContent() {
         initial="hidden"
         animate="visible"
       >
-        <Button
-          color="primary"
-          variant="fill"
-          size="xlarge"
-          display="full"
+        <button
+          className="h-14 w-full rounded-2xl bg-[#3182F6] text-[17px] font-bold text-white active:bg-[#2272EB] transition-colors"
           onClick={() => router.push("/quiz")}
         >
           시작하기
-        </Button>
+        </button>
       </motion.div>
     </div>
   );

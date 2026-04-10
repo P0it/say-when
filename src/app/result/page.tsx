@@ -9,8 +9,6 @@ import ResultCard from "@/components/result/ResultCard";
 import ShareSection from "@/components/result/ShareSection";
 import CoupleCompareButton from "@/components/result/CoupleCompareButton";
 import OtherTypes from "@/components/result/OtherTypes";
-import { Button } from "@toss/tds-mobile";
-import { colors } from "@toss/tds-colors";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,18 +46,13 @@ export default function ResultPage() {
 
   return (
     <motion.div
-      className="flex min-h-dvh flex-col px-6 pb-10 pt-8"
-      style={{ backgroundColor: colors.white }}
+      className="flex min-h-dvh flex-col bg-white px-6 pb-10 pt-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      {/* Header badge */}
       <motion.div variants={itemVariants} className="mb-6 flex justify-center">
-        <div
-          className="rounded-full px-5 py-2 text-[14px] font-semibold"
-          style={{ backgroundColor: colors.blue50, color: colors.blue500 }}
-        >
+        <div className="rounded-full px-5 py-2 text-[14px] font-semibold bg-[#E8F3FF] text-[#3182F6]">
           🎯 당신의 이성 친구 경계 타입은
         </div>
       </motion.div>
@@ -68,21 +61,11 @@ export default function ResultPage() {
         <ResultCard resultType={resultType} />
       </motion.div>
 
-      {/* Divider */}
-      <motion.div
-        variants={itemVariants}
-        className="my-8 h-2 -mx-6"
-        style={{ backgroundColor: colors.grey50 }}
-      />
+      <motion.div variants={itemVariants} className="my-8 h-2 -mx-6 bg-[#F9FAFB]" />
 
-      {/* Share section header */}
       <motion.div variants={itemVariants} className="mb-4">
-        <p className="text-[16px] font-bold" style={{ color: colors.grey900 }}>
-          친구에게 공유하기
-        </p>
-        <p className="mt-1 text-[13px]" style={{ color: colors.grey500 }}>
-          친구의 경계 유형도 알아보세요
-        </p>
+        <p className="text-[16px] font-bold text-[#191F28]">친구에게 공유하기</p>
+        <p className="mt-1 text-[13px] text-[#8B95A1]">친구의 경계 유형도 알아보세요</p>
       </motion.div>
 
       <motion.div variants={itemVariants} className="w-full flex flex-col gap-3">
@@ -90,27 +73,19 @@ export default function ResultPage() {
         <CoupleCompareButton />
       </motion.div>
 
-      {/* Divider */}
-      <motion.div
-        variants={itemVariants}
-        className="my-8 h-2 -mx-6"
-        style={{ backgroundColor: colors.grey50 }}
-      />
+      <motion.div variants={itemVariants} className="my-8 h-2 -mx-6 bg-[#F9FAFB]" />
 
       <motion.div variants={itemVariants} className="w-full">
         <OtherTypes currentId={resultTypeId} allTypes={resultTypes} />
       </motion.div>
 
       <motion.div variants={itemVariants} className="mt-8">
-        <Button
-          color="dark"
-          variant="weak"
-          size="xlarge"
-          display="full"
+        <button
+          className="h-14 w-full rounded-2xl bg-[#F2F4F6] text-[16px] font-bold text-[#6B7684] active:bg-[#E5E8EB] transition-colors"
           onClick={handleRetry}
         >
           다시 테스트하기
-        </Button>
+        </button>
       </motion.div>
     </motion.div>
   );

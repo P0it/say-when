@@ -5,7 +5,6 @@ import type { ResultType, ResultTypeId } from "@/types/quiz";
 import type { ComponentType } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
-import { colors } from "@toss/tds-colors";
 
 const characterMap: Record<ResultTypeId, ComponentType<{ className?: string }>> = {
   concrete: dynamic(() => import("@/components/characters/ConcreteCharacter")),
@@ -23,7 +22,6 @@ interface OtherTypesProps {
 
 export default function OtherTypes({ currentId, allTypes }: OtherTypesProps) {
   const [expandedId, setExpandedId] = useState<ResultTypeId | null>(null);
-
   const otherTypes = allTypes.filter((t) => t.id !== currentId);
 
   const handleToggle = (id: ResultTypeId) => {
@@ -32,7 +30,7 @@ export default function OtherTypes({ currentId, allTypes }: OtherTypesProps) {
 
   return (
     <div className="w-full">
-      <h3 className="mb-4 text-[16px] font-bold" style={{ color: colors.grey900 }}>
+      <h3 className="mb-4 text-[16px] font-bold text-[#191F28]">
         다른 유형 구경하기
       </h3>
       <div className="flex flex-col gap-2">
@@ -44,7 +42,7 @@ export default function OtherTypes({ currentId, allTypes }: OtherTypesProps) {
             <button
               key={rt.id}
               className="w-full rounded-2xl p-4 text-left transition-colors"
-              style={{ backgroundColor: isExpanded ? colors.grey100 : colors.grey50 }}
+              style={{ backgroundColor: isExpanded ? "#F2F4F6" : "#F9FAFB" }}
               onClick={() => handleToggle(rt.id)}
             >
               <div className="flex items-center gap-3">
@@ -61,13 +59,12 @@ export default function OtherTypes({ currentId, allTypes }: OtherTypesProps) {
                     </span>
                     <span className="text-[16px]">{rt.emoji}</span>
                   </div>
-                  <p className="mt-0.5 truncate text-[12px]" style={{ color: colors.grey400 }}>
+                  <p className="mt-0.5 truncate text-[12px] text-[#B0B8C1]">
                     {rt.subtitle}
                   </p>
                 </div>
                 <svg
-                  className={`h-5 w-5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
-                  style={{ color: colors.grey400 }}
+                  className={`h-5 w-5 text-[#B0B8C1] transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -86,7 +83,7 @@ export default function OtherTypes({ currentId, allTypes }: OtherTypesProps) {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 text-[13px] leading-[1.7]" style={{ color: colors.grey600 }}>
+                    <p className="mt-4 text-[13px] leading-[1.7] text-[#6B7684]">
                       {rt.description}
                     </p>
                   </motion.div>

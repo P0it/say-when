@@ -4,8 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useQuizStore } from "@/store/quizStore";
 import { questions } from "@/data/questions";
 import QuestionCard from "@/components/quiz/QuestionCard";
-import { ProgressBar } from "@toss/tds-mobile";
-import { colors } from "@toss/tds-colors";
 import type { Answer } from "@/types/quiz";
 
 const slideVariants = {
@@ -20,7 +18,7 @@ export default function QuizContainer() {
   const goBack = useQuizStore((s) => s.goBack);
 
   const question = questions[currentQuestionIndex];
-  const progress = currentQuestionIndex / questions.length;
+  const progress = ((currentQuestionIndex) / questions.length) * 100;
   const canGoBack = currentQuestionIndex > 0;
 
   const handleAnswer = (answer: Answer) => {
@@ -28,17 +26,12 @@ export default function QuizContainer() {
   };
 
   return (
-    <div className="flex min-h-dvh flex-col" style={{ backgroundColor: colors.white }}>
-      {/* Top navigation bar */}
-      <div className="sticky top-0 z-10 px-6 pb-3 pt-4" style={{ backgroundColor: colors.white }}>
+    <div className="flex min-h-dvh flex-col bg-white">
+      <div className="sticky top-0 z-10 bg-white px-6 pb-3 pt-4">
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {canGoBack ? (
-              <button
-                onClick={goBack}
-                className="flex items-center justify-center"
-                style={{ color: colors.grey600 }}
-              >
+              <button onClick={goBack} className="flex items-center justify-center text-[#6B7684]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -46,22 +39,25 @@ export default function QuizContainer() {
             ) : (
               <div className="w-5" />
             )}
-            <span className="text-[14px] font-bold" style={{ color: colors.blue500 }}>
+            <span className="text-[14px] font-bold text-[#3182F6]">
               Q{currentQuestionIndex + 1}
             </span>
           </div>
-          <span className="text-[13px] font-medium" style={{ color: colors.grey400 }}>
+          <span className="text-[13px] font-medium text-[#B0B8C1]">
             {currentQuestionIndex + 1} / {questions.length}
           </span>
         </div>
-        <ProgressBar
-          progress={progress}
-          size="normal"
-          animate
-        />
+        {/* Progress bar */}
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#F2F4F6]">
+          <motion.div
+            className="h-full rounded-full bg-[#3182F6]"
+            initial={false}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const }}
+          />
+        </div>
       </div>
 
-      {/* Question area */}
       <div className="flex flex-1 items-center justify-center px-6 py-6">
         <AnimatePresence mode="wait">
           {question ? (
