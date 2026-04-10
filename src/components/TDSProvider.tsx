@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { TDSMobileAITProvider } from "@toss/tds-mobile-ait";
 import { ThemeProvider } from "@toss/tds-mobile";
 
 export default function TDSProvider({ children }: { children: React.ReactNode }) {
@@ -11,19 +10,17 @@ export default function TDSProvider({ children }: { children: React.ReactNode })
     setMounted(true);
   }, []);
 
-  // SSR/prerender: 빈 화면 (TDS 컴포넌트가 ThemeProvider 없이 렌더되면 에러남)
-  // 클라이언트 마운트 후: TDS Provider로 감싸서 정상 렌더
   if (!mounted) {
     return (
       <div style={{ minHeight: "100dvh", backgroundColor: "#fff" }} />
     );
   }
 
+  // 토스 앱 환경에서는 TDSMobileAITProvider도 감싸야 하지만,
+  // 웹/Vercel 환경에서는 ThemeProvider만으로 충분
   return (
-    <TDSMobileAITProvider>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
-    </TDSMobileAITProvider>
+    <ThemeProvider>
+      {children}
+    </ThemeProvider>
   );
 }
