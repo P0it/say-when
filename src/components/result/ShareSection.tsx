@@ -14,12 +14,12 @@ export default function ShareSection({ resultType }: ShareSectionProps) {
 
   const handleShareResult = async () => {
     const shareUrl = getShareUrl();
-    const text = `나의 애사친 경계 타입은 "${resultType.name}" ${resultType.emoji}\n${resultType.shareLine}`;
+    const text = `나의 이성친구 경계 타입은 "${resultType.name}" ${resultType.emoji}\n${resultType.shareLine}`;
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({
-          title: `애사친 경계 테스트 결과: ${resultType.name}`,
+          title: `이성친구 경계 테스트 결과: ${resultType.name}`,
           text,
           url: shareUrl,
         });
@@ -39,12 +39,12 @@ export default function ShareSection({ resultType }: ShareSectionProps) {
 
   const handleShareTest = async () => {
     const shareUrl = typeof window !== "undefined" ? window.location.origin : "";
-    const text = "애사친 경계 테스트 🤔\n이 행동, 친구니까 가능한 거 맞아?\n너의 경계 유형을 알아봐!";
+    const text = "이성친구 경계 테스트 🤔\n이 행동, 친구니까 가능한 거 맞아?\n너의 경계 유형을 알아봐!";
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({
-          title: "애사친 경계 테스트",
+          title: "이성친구 경계 테스트",
           text,
           url: shareUrl,
         });

@@ -63,7 +63,7 @@ function ResultContent() {
     >
       <motion.div variants={itemVariants} className="mb-6 flex justify-center">
         <div className="rounded-full px-5 py-2 text-[14px] font-semibold bg-[#E8F3FF] text-[#3182F6]">
-          {isSharedView ? "🔍 이 사람의 애사친 경계 타입은" : "🎯 당신의 애사친 경계 타입은"}
+          {isSharedView ? "🔍 이 사람의 이성친구 경계 타입은" : "🎯 당신의 이성친구 경계 타입은"}
         </div>
       </motion.div>
 

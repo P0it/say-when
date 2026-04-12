@@ -45,7 +45,7 @@ export default function LandingContent() {
           className="mb-5 rounded-full px-4 py-1.5 text-[13px] font-semibold bg-[#DCEEFB] text-[#3182F6]"
           variants={itemVariants}
         >
-          애사친 경계 테스트
+          이성친구 경계 테스트
         </motion.div>
 
         <motion.h1
@@ -61,7 +61,7 @@ export default function LandingContent() {
           className="mt-4 text-center text-[14px] leading-[1.7] text-[#6B7684]"
           variants={itemVariants}
         >
-          내 연인이 애사친과 이런 행동을 했을 때
+          내 연인이 이성친구과 이런 행동을 했을 때
           <br />
           <span className="font-semibold text-[#3182F6]">내가 괜찮은지</span> 판단해 주세요
         </motion.p>

@@ -11,11 +11,11 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "애사친 경계 테스트 - 이 행동, 친구니까 가능한 거 맞아?",
+  title: "이성친구 경계 테스트 - 이 행동, 친구니까 가능한 거 맞아?",
   description:
-    "내 연인이 애사친과 이런 행동을 했을 때, 나는 괜찮을까? 20문항으로 알아보는 경계 유형 테스트",
+    "내 연인이 이성친구과 이런 행동을 했을 때, 나는 괜찮을까? 20문항으로 알아보는 경계 유형 테스트",
   openGraph: {
-    title: "애사친 경계 테스트",
+    title: "이성친구 경계 테스트",
     description: "이 행동, 친구니까 가능한 거 맞아?",
     type: "website",
     images: [{ url: "/og-image.png" }],

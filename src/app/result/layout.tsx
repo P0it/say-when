@@ -19,10 +19,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (resultType) {
     return {
-      title: `${resultType.name} ${resultType.emoji} - 애사친 경계 테스트`,
-      description: `나의 애사친 경계 타입은 "${resultType.name}" - ${resultType.shareLine}`,
+      title: `${resultType.name} ${resultType.emoji} - 이성친구 경계 테스트`,
+      description: `나의 이성친구 경계 타입은 "${resultType.name}" - ${resultType.shareLine}`,
       openGraph: {
-        title: `${resultType.name} ${resultType.emoji} - 애사친 경계 테스트`,
+        title: `${resultType.name} ${resultType.emoji} - 이성친구 경계 테스트`,
         description: resultType.shareLine,
         type: "website",
         images: [{ url: ogImage }],
@@ -31,10 +31,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   return {
-    title: "애사친 경계 테스트 결과",
+    title: "이성친구 경계 테스트 결과",
     description: "이 행동, 친구니까 가능한 거 맞아? 내 경계 유형을 확인해보세요!",
     openGraph: {
-      title: "애사친 경계 테스트",
+      title: "이성친구 경계 테스트",
       description: "이 행동, 친구니까 가능한 거 맞아?",
       type: "website",
       images: [{ url: ogImage }],
